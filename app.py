@@ -2,22 +2,22 @@
 Author: hszheng hszheng2011@foxmail.com
 Date: 2022-12-12 14:18:31
 LastEditors: hszheng hszheng2011@foxmail.com
-LastEditTime: 2022-12-13 10:57:19
+LastEditTime: 2022-12-13 12:52:06
 FilePath: /switch-django-crontab/app.py
-Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+Description: APP主程序
 '''
 from flask import Flask, request, abort
 from flask import render_template
 from cron import Cron
 import json
 
-app = Flask(__name__, static_folder='static')
+cronlist = Flask(__name__, static_folder='static')
 
-@app.route('/')
+@cronlist.route('/')
 def hello_world():
     return render_template('index.html', name="hszheng")
 
-@app.route("/cron")
+@cronlist.route("/cron")
 def all_cron():
     try:
         cron = Cron()
@@ -27,7 +27,7 @@ def all_cron():
         abort(500)
 
 # cron任务操作
-@app.route("/opcron", methods=["GET"])
+@cronlist.route("/opcron", methods=["GET"])
 def enable_cron():
     success_msg = ""
     error_msg = ""
@@ -50,5 +50,5 @@ def enable_cron():
         abort(500)
 
 if __name__ =="__main__":
-    app.run(debug=True, port=8080, host="192.168.31.211")
+    cronlist.run(debug=True, port=8080, host="0.0.0.0")
 
