@@ -52,12 +52,12 @@
                                                 {% if cron.enabled %}
                                                 <a href="/opcron?optype=1&cronid={{ loop.index -1}}">
                                                     <span
-                                                        class="badge badge-primary rounded-pill d-inline">{{cron.prev}}</span>
+                                                        class="badge badge-primary rounded-pill d-inline">{{cron.next}}</span>
                                                 </a>
                                                 {% else %}
                                                 <a href="/opcron?optype=0&cronid={{ loop.index -1}}">
                                                     <span
-                                                        class="badge badge-danger rounded-pill d-inline">{{cron.prev}}</span>
+                                                        class="badge badge-danger rounded-pill d-inline">{{cron.next}}</span>
                                                 </a>
                                                 {% endif %}
                                             </p>
