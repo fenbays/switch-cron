@@ -2,7 +2,7 @@
 Author: hszheng hszheng2011@foxmail.com
 Date: 2022-12-12 11:30:36
 LastEditors: hszheng hszheng2011@foxmail.com
-LastEditTime: 2022-12-13 12:43:42
+LastEditTime: 2022-12-13 13:56:16
 FilePath: /switch-django-crontab/cron.py
 Description: Cron管理类
 '''
@@ -33,7 +33,6 @@ class Cron:
                 "enabled": job.enabled,
                 'comment': job.comment
             }
-            print(cron_dict)
             cron_list.append(cron_dict)
         
         # print(cron_list)

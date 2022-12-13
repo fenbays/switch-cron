@@ -2,7 +2,7 @@
 Author: hszheng hszheng2011@foxmail.com
 Date: 2022-12-12 14:18:31
 LastEditors: hszheng hszheng2011@foxmail.com
-LastEditTime: 2022-12-13 12:53:36
+LastEditTime: 2022-12-13 13:54:51
 FilePath: /switch-django-crontab/app.py
 Description: APP主程序
 '''
@@ -15,7 +15,7 @@ cronlist = Flask(__name__, static_folder='static')
 
 @cronlist.route('/')
 def hello_world():
-    return render_template('index.html', name="hszheng")
+    abort(404)
 
 @cronlist.route("/cron")
 def all_cron():
@@ -51,4 +51,3 @@ def enable_cron():
 
 if __name__ =="__main__":
     cronlist.run(debug=True, port=8090, host="0.0.0.0")
-
