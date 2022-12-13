@@ -2,7 +2,7 @@
 Author: hszheng hszheng2011@foxmail.com
 Date: 2022-12-12 14:18:31
 LastEditors: hszheng hszheng2011@foxmail.com
-LastEditTime: 2022-12-13 12:52:06
+LastEditTime: 2022-12-13 12:53:36
 FilePath: /switch-django-crontab/app.py
 Description: APP主程序
 '''
@@ -50,5 +50,5 @@ def enable_cron():
         abort(500)
 
 if __name__ =="__main__":
-    cronlist.run(debug=True, port=8080, host="0.0.0.0")
+    cronlist.run(debug=True, port=8090, host="0.0.0.0")
 
