@@ -1,0 +1,105 @@
+<!--
+ * @Author: hszheng hszheng2011@foxmail.com
+ * @Date: 2022-12-12 15:38:23
+ * @LastEditors: hszheng hszheng2011@foxmail.com
+ * @LastEditTime: 2022-12-13 11:53:03
+ * @FilePath: /switch-django-crontab/templates/index.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Hello from Flask</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link href="static/mdb.min.css" rel="stylesheet" />
+    <style>
+        html,
+        body {
+            text-size-adjust: none;
+            -webkit-text-size-adjust: none;
+            -moz-text-size-adjust: none;
+            -ms-text-size-adjust: none;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="pt-2  mdb-docs-layout">
+        <div class="container mt-2  px-lg-5">
+            <div class="row">
+                <!-- <h2>定时任务状态管理</h1> -->
+                    <span class="badge badge-success text-start">{{ success_msg }}</span>
+                    <span class="badge badge-warning text-start">{{ error_msg}}</span>
+                    <table class="table align-middle mb-0 bg-white table-responsive">
+                        <thead class="bg-light">
+                            <tr>
+                                <th class="width: 30px">定时任务表</th>
+                                <!-- <th>状态</th>
+                                <th>动作</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cron in cron_list %}
+                            <tr>
+
+                                <td class="width: 30px">
+                                    <div class="d-flex align-items-left">
+                                        <div>
+                                            <p class="fw-bold mb-1">{{ loop.index }}. 
+                                                {% if cron.enabled %}
+                                                <a href="/opcron?optype=1&cronid={{ loop.index -1}}">
+                                                    <span
+                                                        class="badge badge-primary rounded-pill d-inline">{{cron.prev}}</span>
+                                                </a>
+                                                {% else %}
+                                                <a href="/opcron?optype=0&cronid={{ loop.index -1}}">
+                                                    <span
+                                                        class="badge badge-danger rounded-pill d-inline">{{cron.prev}}</span>
+                                                </a>
+                                                {% endif %}
+                                            </p>
+                                            <p class="text-muted mb-0">{{ cron.task }}</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <!-- 
+                                <td>
+                                    {% if cron.enabled %}
+                                    <span class="badge badge-success rounded-pill d-inline">运行中</span>
+                                    {% else %}
+                                    <span class="badge badge-warning rounded-pill d-inline">暂停中</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if cron.enabled %}
+                                    <a href="/opcron?optype=1&cronid={{ loop.index -1}}">
+                                        <button type="button" class="btn btn-link btn-sm fw-bold">
+                                            停
+                                        </button>
+                                    </a>
+
+                                    {% else %}
+                                    <a href="/opcron?optype=0&cronid={{ loop.index -1}}">
+                                        <button type="button" class="btn btn-link btn-sm fw-bold">
+                                            启
+                                        </button>
+                                    </a>
+                                    {% endif %}
+                                </td> -->
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <p class="note note-secondary">
+                        <strong>说明:</strong> 任务表序号右侧 <strong>时间</strong> 代表下次运行时间；<br><strong>蓝色</strong>表示运行中，点击可停用；<strong>红色</strong>表示暂停中，点击可启用
+                      </p>
+            </div>
+        </div>
+    </main>
+    <script type="text/javascript" src="static/mdb.min.js"></script>
+</body>
+
+</html>
